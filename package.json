@@ -1,0 +1,32 @@
+{
+  "name": "empsd",
+  "version": "1.0.0",
+  "description": "1. Clone the project 2. Run `npm i` to install all the dependencies 3. Run `npx playwright test` to execute the tests 4. Run `npx playwright test src/testcases/example/example.spec.js` to execute a single test 5. Run test in ui mode `npx playwright test --ui` 6. Show reporting npx `npx playwright show-report`",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "npx playwright test --debug",
+    "test:report": "npx playwright show-report",
+    "test:auth": "npx playwright test src/testcases/example/Authentication.spec.js",
+    "test:dashboard": "npx playwright test src/testcases/example/Dashboard.spec.js",
+    "test:chrome": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:webkit": "npx playwright test --project=webkit",
+    "test:mobile": "npx playwright test --project='Mobile Chrome'",
+    "install:browsers": "npx playwright install",
+    "codegen": "npx playwright codegen",
+    "trace": "npx playwright show-trace"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0"
+  },
+  "dependencies": {
+    "playwright": "^1.55.0"
+  }
+}
