@@ -6,10 +6,20 @@ const testData = {
       password: 'Admin123!',
       role: 'admin'
     },
-    user: {
-      email: 'user@test.com',
-      password: 'User123@',
-      role: 'user'
+    region: {
+      email: 'regsuper@ddn.co.id',
+      password: 'admin123@',
+      role: 'region'
+    },
+    up3: {
+      email: 'up3admin@ddn.co.id',
+      password: 'admin123@',
+      role: 'up3'
+    },
+    uid: {
+      email: 'uidadmin@ddn.co.id',
+      password: 'admin123@',
+      role: 'UID'
     },
     invalid: {
       email: 'invalid@test.com',
@@ -17,6 +27,15 @@ const testData = {
       role: 'invalid'
     }
   },
+
+  // Matrix of accounts for parameterized login testing
+  loginAccounts: [
+    { role: 'admin', email: 'admin@vhiweb.com', password: 'Admin123!', expectedResult: 'success' },
+    { role: 'region', email: 'regsuper@ddn.co.id', password: 'admin123@', expectedResult: 'success' },
+    { role: 'up3', email: 'up3admin@ddn.co.id', password: 'admin123@', expectedResult: 'success' },
+    { role: 'UID', email: 'uidadmin@ddn.co.id', password: 'admin123@', expectedResult: 'success' },
+    { role: 'invalid', email: 'invalid@test.com', password: 'wrongpassword', expectedResult: 'failure' }
+  ],
 
   // Test URLs
   urls: {
