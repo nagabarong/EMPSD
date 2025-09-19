@@ -146,7 +146,7 @@ test.describe('Authentication Tests', () => {
     // Wait for dashboard to load
     await dashboardPage.waitForDashboardLoad();
 
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(3000);
     
     // Verify dashboard elements
     expect(await dashboardPage.isEMPSDHeadingVisible()).toBeTruthy();
@@ -155,5 +155,31 @@ test.describe('Authentication Tests', () => {
     // Verify page title contains expected text
     const pageTitle = await dashboardPage.getPageTitle();
     expect(pageTitle).toContain(testData.expectedText.dashboardHeading);
+  });
+
+  // multiple accounts login tests
+  test.describe('Multiple Accounts Login Tests', () => {
+    test.describe.configure({ mode: 'serial' });
+    for (const account of testData.loginAccounts || []) {
+      test(`Login with ${account.role} should result in ${account.expectedResult}`, async ({ page }) => {
+        await loginPage.navigateToLogin();
+
+        await loginPage.login(account.email, account.password, true);
+
+        if (account.expectedResult === 'success') {
+          await dashboardPage.waitForDashboardLoad();
+
+          await page.waitForTimeout(2000);
+
+          expect(await dashboardPage.verifySuccessfulLogin()).toBeTruthy();
+          expect(await dashboardPage.isEMPSDHeadingVisible()).toBeTruthy();
+        } else {
+          // Expect to remain on login page for failure cases
+          await page.waitForTimeout(2000);
+          const isStillOnLoginPage = await loginPage.isLoginFormVisible();
+          expect(isStillOnLoginPage).toBeTruthy();
+        }
+      });
+    }
   });
 });
