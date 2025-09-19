@@ -26,6 +26,8 @@ test.describe('Dashboard Tests', () => {
     
     // Wait for dashboard to load
     await dashboardPage.waitForDashboardLoad();
+
+    await page.waitForTimeout(2000);
     
     // Verify dashboard elements
     expect(await dashboardPage.verifySuccessfulLogin()).toBeTruthy();
@@ -41,6 +43,8 @@ test.describe('Dashboard Tests', () => {
     );
     
     await dashboardPage.waitForDashboardLoad();
+    
+    await page.waitForTimeout(2000);
     
     // Verify EMPSD heading
     expect(await dashboardPage.isEMPSDHeadingVisible()).toBeTruthy();
@@ -60,6 +64,8 @@ test.describe('Dashboard Tests', () => {
     
     await dashboardPage.waitForDashboardLoad();
     
+    await page.waitForTimeout(2000);
+    
     // Check navigation elements
     expect(await dashboardPage.isNavigationVisible()).toBeTruthy();
     expect(await dashboardPage.isMainContentVisible()).toBeTruthy();
@@ -75,6 +81,8 @@ test.describe('Dashboard Tests', () => {
     );
     
     await dashboardPage.waitForDashboardLoad();
+    
+    await page.waitForTimeout(2000);
     
     // Verify page title
     const pageTitle = await dashboardPage.getPageTitle();
@@ -92,6 +100,8 @@ test.describe('Dashboard Tests', () => {
     );
     
     await dashboardPage.waitForDashboardLoad();
+    
+    await page.waitForTimeout(2000);
     
     // Test different viewport sizes
     const viewports = [
@@ -123,6 +133,8 @@ test.describe('Dashboard Tests', () => {
     );
     
     await dashboardPage.waitForDashboardLoad();
+    
+    await page.waitForTimeout(2000);
     
     const loadTime = Date.now() - startTime;
     
@@ -158,6 +170,8 @@ test.describe('Dashboard Tests', () => {
     
     await dashboardPage.waitForDashboardLoad();
     
+    await page.waitForTimeout(2000);
+    
     // Check if user menu is available
     if (await dashboardPage.isUserMenuVisible()) {
       await dashboardPage.clickUserMenu();
@@ -178,6 +192,8 @@ test.describe('Dashboard Tests', () => {
     );
     
     await dashboardPage.waitForDashboardLoad();
+    
+    await page.waitForTimeout(2000);
     
     // Check for proper heading structure
     const headings = await page.locator('h1, h2, h3, h4, h5, h6').all();

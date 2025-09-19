@@ -13,9 +13,10 @@ EMPSD/
 │   ├── LoginPage.js           # Login page object
 │   └── DashboardPage.js       # Dashboard page object
 ├── src/testcases/
-│   └── example/
-│       ├── Authentication.spec.js  # Authentication tests (includes login functionality)
-│       └── Dashboard.spec.js      # Dashboard tests
+│   └── Feature/
+│       ├── Authentication/
+│       │   └── Authentication.spec.js
+│       └── Load-forecast/
 ├── testdata/
 │   └── testData.js            # Test data and constants
 ├── utils/
@@ -67,10 +68,26 @@ npm run test:ui
 npm run test:debug
 ```
 
+### Creating and Running Your Tests
+
+1. Create your spec files under `src/testcases/`, for example:
+   - `src/testcases/example/Authentication.spec.js`
+   - `src/testcases/example/Dashboard.spec.js`
+
+2. Run all tests:
+```bash
+npm test
+```
+
+3. Run a specific file:
+```bash
+npx playwright test src/testcases/Feature/Authentication/Authentication.spec.js
+```
+
 ### Specific Test Suites
 
 ```bash
-# Run authentication tests only (includes login functionality)
+# Run authentication tests only
 npm run test:auth
 
 # Run dashboard tests only

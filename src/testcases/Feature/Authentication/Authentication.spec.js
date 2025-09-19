@@ -1,10 +1,10 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
-const LoginPage = require('../../../pages/LoginPage');
-const DashboardPage = require('../../../pages/DashboardPage');
-const config = require('../../../config/config');
-const testData = require('../../../testdata/testData');
-const TestUtils = require('../../../utils/testUtils');
+const LoginPage = require('../../../../pages/LoginPage');
+const DashboardPage = require('../../../../pages/DashboardPage');
+const config = require('../../../../config/config.js');
+const testData = require('../../../../testdata/testData');
+const TestUtils = require('../../../../utils/testUtils');
 
 test.describe('Authentication Tests', () => {
   let loginPage;
@@ -43,6 +43,8 @@ test.describe('Authentication Tests', () => {
     
     // Wait for dashboard to load
     await dashboardPage.waitForDashboardLoad();
+
+    await page.waitForTimeout(2000);
     
     // Verify successful login
     expect(await dashboardPage.verifySuccessfulLogin()).toBeTruthy();
@@ -143,6 +145,8 @@ test.describe('Authentication Tests', () => {
     
     // Wait for dashboard to load
     await dashboardPage.waitForDashboardLoad();
+
+    await page.waitForTimeout(2000);
     
     // Verify dashboard elements
     expect(await dashboardPage.isEMPSDHeadingVisible()).toBeTruthy();
