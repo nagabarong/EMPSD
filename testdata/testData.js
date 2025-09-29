@@ -3,7 +3,7 @@ const testData = {
   users: {
     admin: {
       email: 'admin@vhiweb.com',
-      password: 'Admin123!',
+      password: 'Admin123@',
       role: 'admin'
     },
     region: {
@@ -30,7 +30,7 @@ const testData = {
 
   // Matrix of accounts for parameterized login testing
   loginAccounts: [
-    { role: 'admin', email: 'admin@vhiweb.com', password: 'Admin123!', expectedResult: 'success' },
+    { role: 'admin', email: 'admin@vhiweb.com', password: 'Admin123@', expectedResult: 'success' },
     { role: 'region', email: 'regsuper@ddn.co.id', password: 'admin123@', expectedResult: 'success' },
     { role: 'up3', email: 'up3admin@ddn.co.id', password: 'admin123@', expectedResult: 'success' },
     { role: 'UID', email: 'uidadmin@ddn.co.id', password: 'admin123@', expectedResult: 'success' },
@@ -42,6 +42,7 @@ const testData = {
     baseUrl: 'https://pln-fe.dev.embrio.id',
     loginUrl: 'https://pln-fe.dev.embrio.id/login?redirect=%2F',
     dashboardUrl: 'https://pln-fe.dev.embrio.id/dashboard',
+    loadForecastUrl: 'https://pln-fe.dev.embrio.id/prakiraan-beban',
     homeUrl: 'https://pln-fe.dev.embrio.id/'
   },
 
@@ -50,6 +51,7 @@ const testData = {
     pageTitle: 'PLN EMPSD',
     loginPageTitle: 'PLN EMPSD',
     dashboardHeading: 'EMPSD',
+    loadForecastHeading: 'Prakiraan Beban',
     loginButton: 'Masuk',
     emailPlaceholder: 'Alamat email',
     passwordPlaceholder: 'Password'
@@ -105,6 +107,44 @@ const testData = {
       tablet: { width: 768, height: 1024 },
       mobile: { width: 375, height: 667 }
     }
+  },
+
+  // Load forecast specific data
+  loadForecast: {
+    dateRanges: {
+      currentMonth: {
+        start: '2024-01-01',
+        end: '2024-01-31'
+      },
+      lastMonth: {
+        start: '2023-12-01',
+        end: '2023-12-31'
+      },
+      currentYear: {
+        start: '2024-01-01',
+        end: '2024-12-31'
+      }
+    },
+    regions: [
+      'Jawa Barat',
+      'Jawa Tengah',
+      'Jawa Timur',
+      'Sumatera Utara',
+      'Sumatera Selatan'
+    ],
+    units: [
+      'MW',
+      'GW',
+      'kWh'
+    ],
+    expectedColumns: [
+      'Tanggal',
+      'Jam',
+      'Beban (MW)',
+      'Prakiraan (MW)',
+      'Selisih (MW)',
+      'Persentase (%)'
+    ]
   }
 };
 

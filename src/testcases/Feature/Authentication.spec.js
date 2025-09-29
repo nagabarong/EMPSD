@@ -1,10 +1,10 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
-const LoginPage = require('../../../../pages/LoginPage');
-const DashboardPage = require('../../../../pages/DashboardPage');
-const config = require('../../../../config/config.js');
-const testData = require('../../../../testdata/testData');
-const TestUtils = require('../../../../utils/testUtils');
+const LoginPage = require('../../../pages/LoginPage');
+const DashboardPage = require('../../../pages/DashboardPage');
+const config = require('../../../config/config.js');
+const testData = require('../../../testdata/testData');
+const TestUtils = require('../../../utils/testUtils');
 
 test.describe('Authentication Tests', () => {
   let loginPage;
